@@ -1,0 +1,21 @@
+# outputs / artifacts
+plots/
+data/
+runs/**/ckpt_*.pt
+runs/**/ckpt_*.pth
+runs/**/ckpt_*.ckpt
+runs/**/*.png
+runs/**/*.jpg
+runs/**/*.jpeg
+runs/**/*.tar
+runs/**/*.zip
+runs/**/*.npy
+runs/**/*.npz
+
+# python
+__pycache__/
+*.pyc
+
+# envs
+.venv/
+venv/
