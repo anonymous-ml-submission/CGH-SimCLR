@@ -3,7 +3,7 @@ python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
-2) Data (download)
+2) Data (online download in data folder)
 
 ./data/
   CIFAR10/ or CIFAR100/ 
@@ -11,6 +11,7 @@ pip install -r requirements.txt
     CIFAR-10-C/
     CIFAR-100-C/
 
+-data_root ./data
 
 
 
