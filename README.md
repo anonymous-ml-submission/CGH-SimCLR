@@ -84,6 +84,7 @@ python tools/plot_training_dynamics.py \
   --outdir plots
 
 6. Plot weight histograms
+
 python tools/plot_weight_histograms.py \
   --inputs "runs/**/w_hist.csv" \
   --outdir plots
@@ -103,9 +104,13 @@ python tools/plot_robustness_across_datasets.py \
   --force_dataset_by_path
 
 9. CIFAR-C evaluation from a checkpoint
+
 Select checkpoint
+
 ls runs/**/ckpt_ep200.pt
+
 Run CIFAR-C evaluation
+
 python tools/evaluate_cifar_c.py \
   --ckpt runs/<run_dir>/ckpt_ep200.pt \
   --dataset cifar10 \
@@ -113,7 +118,9 @@ python tools/evaluate_cifar_c.py \
   --c_root ./data/CIFAR-C \
   --out_csv plots/cifarc_eval.csv \
   --no_download
+
 Summarize results
+
 python tools/summarize_cifarc_logs.py \
   --in_csv plots/cifarc_eval.csv \
   --out_csv plots/cifarc_summary.csv
