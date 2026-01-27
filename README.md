@@ -67,12 +67,11 @@ done
 Each run directory should contain:
 
 dynamics.csv
-
 w_hist.csv
-
 robustness_summary.csv
 
 Quick check:
+
 ls runs/**/dynamics.csv
 ls runs/**/w_hist.csv
 ls runs/**/robustness_summary.csv
