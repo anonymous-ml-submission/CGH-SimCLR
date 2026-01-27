@@ -33,6 +33,7 @@ for p in 0.0 0.2 0.3 0.4; do
     --pos_corrupt_p $p \
     --lambda_var 0.0 --lambda_cov 0.0 \
     --out_root runs --data_root ./data --no_download
+    
 done
 
 
@@ -49,6 +50,7 @@ for p in 0.0 0.2 0.3 0.4; do
     --pos_corrupt_p $p \
     --lambda_var 0.0 --lambda_cov 0.0 \
     --out_root runs --data_root ./data --no_download
+    
 done
 
 
