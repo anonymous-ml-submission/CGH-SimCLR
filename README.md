@@ -1,29 +1,42 @@
-1) Setup
+# CGH-SimCLR
+
+Anonymous artifact for training SimCLR and CGH-SimCLR on CIFAR-10/100 and evaluating robustness on CIFAR-C.
+
+---
+
+## 1. Environment setup
+
+Create and activate a virtual environment, then install dependencies:
+
+```bash
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
-2) Data (online download in data folder)
+2. Data
 
-   ./data/
-     CIFAR10/ or CIFAR100/ 
-      CIFAR-C/
-      CIFAR-10-C/
-      CIFAR-100-C/
+Datasets are downloaded online into the ./data directory.
 
-     -data_root ./data
+Expected layout:
+./data/
+  CIFAR10/
+  CIFAR100/
+  CIFAR-C/
+  CIFAR-10-C/
+  CIFAR-100-C/
 
-
-
-If datasets are already present, training will run with:
-
+Use the following flag for all runs:
 --data_root ./data
-
+If datasets are already present, disable downloading:
 --no_download
 
-3) Train models (this generates the CSVs used by tools)
+3. Train models
 
-3.1 SimCLR baseline (seed loop + p loop)
+(Generates CSV files used by analysis tools)
+
+All outputs are written to runs/.
+
+3.1 SimCLR baseline (p loop)
 
 for p in 0.0 0.2 0.3 0.4; do
   OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 \
@@ -34,13 +47,9 @@ for p in 0.0 0.2 0.3 0.4; do
     --pos_corrupt_p $p \
     --lambda_var 0.0 --lambda_cov 0.0 \
     --out_root runs --data_root ./data --no_download
-    
 done
 
-
-
-3.2 CGH-SimCLR (Gate-only) (seed loop + p loop)
-
+3.2 CGH-SimCLR (Gate-only) (p loop)
 
 for p in 0.0 0.2 0.3 0.4; do
   OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=0 \
@@ -51,13 +60,11 @@ for p in 0.0 0.2 0.3 0.4; do
     --pos_corrupt_p $p \
     --lambda_var 0.0 --lambda_cov 0.0 \
     --out_root runs --data_root ./data --no_download
-    
 done
 
+4. Verify outputs
 
-4) Verify outputs exist
-
-After training, each run directory should contain these files:
+Each run directory should contain:
 
 dynamics.csv
 
@@ -66,42 +73,39 @@ w_hist.csv
 robustness_summary.csv
 
 Quick check:
-
 ls runs/**/dynamics.csv
 ls runs/**/w_hist.csv
 ls runs/**/robustness_summary.csv
 
-5) Training dynamics plots
+5. Plot training dynamics
+
 python tools/plot_training_dynamics.py \
   --inputs "runs/**/dynamics.csv" \
   --outdir plots
 
-6) Weight histogram plots
+6. Plot weight histograms
 python tools/plot_weight_histograms.py \
   --inputs "runs/**/w_hist.csv" \
   --outdir plots
 
-7) Merge robustness results (table numbers)
+7. Merge robustness results
+
 python tools/merge_clean_eval_results.py \
   --inputs "runs/**/robustness_summary.csv" \
   --out_csv plots/robustness_merged.csv
 
-8) Robustness curves (main paper plots)
+8. Robustness curves (main paper plots)
+
 python tools/plot_robustness_across_datasets.py \
   --inputs "runs/**/robustness_summary.csv" \
   --outdir plots \
   --seeds 0 1 2 3 4 \
   --force_dataset_by_path
 
-9) CIFAR-C evaluation from a checkpoint 
-
-Pick a trained checkpoint:
-
+9. CIFAR-C evaluation from a checkpoint
+Select checkpoint
 ls runs/**/ckpt_ep200.pt
-
-
-Run CIFAR-C eval:
-
+Run CIFAR-C evaluation
 python tools/evaluate_cifar_c.py \
   --ckpt runs/<run_dir>/ckpt_ep200.pt \
   --dataset cifar10 \
@@ -109,10 +113,17 @@ python tools/evaluate_cifar_c.py \
   --c_root ./data/CIFAR-C \
   --out_csv plots/cifarc_eval.csv \
   --no_download
-
-
-10) Summarize:
-
+Summarize results
 python tools/summarize_cifarc_logs.py \
   --in_csv plots/cifarc_eval.csv \
   --out_csv plots/cifarc_summary.csv
+
+
+
+
+
+
+
+
+
+
