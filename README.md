@@ -1,6 +1,6 @@
 # CGH-SimCLR
 
-Anonymous artifact for training SimCLR and CGH-SimCLR on CIFAR-10/100 and evaluating robustness on CIFAR-C.
+Training SimCLR and CGH-SimCLR on CIFAR-10/100 and STL-10 and evaluating robustness on CIFAR-C.
 
 ---
 
@@ -21,6 +21,7 @@ Expected layout:
 ./data/
   CIFAR10/
   CIFAR100/
+  STL-10/
   CIFAR-C/
   CIFAR-10-C/
   CIFAR-100-C/
