@@ -44,7 +44,7 @@ def main():
     seed.to_csv(args.out_seed, index=False)
 
     # -------- group mean±std across seeds --------
-    # Option A: use only complete seeds (recommended)
+    # 
     seed_ok = seed[seed["complete"]].copy()
 
     group = (
