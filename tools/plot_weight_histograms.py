@@ -7,7 +7,7 @@ Plot weight histogram(s) from one or many w_hist.csv files (produced by scripts/
 
 Modes
 -----
-1) line   : your original plot (hist mass vs weight bin center), averaged across seeds,
+1) line   : paper original plot (hist mass vs weight bin center), averaged across seeds,
            one curve per dataset for a fixed (method, p, epoch).
 2) heatmap: epoch x bin heatmap per (dataset, method, p, gamma, k_gate, seed).
 
@@ -17,7 +17,7 @@ Examples
 python tools/plot_weight_histograms.py --inputs runs/w_hist.csv --mode line --method cgh --p 0.0 --epoch 1 --outdir plots
 
 # (B) From anywhere, point to another tree
-python /path/to/icml_cgh_simclr_artifact/tools/plot_weight_histograms.py \
+python /path/to/artifact/tools/plot_weight_histograms.py \
   --inputs "./runs/**/w_hist.csv" \
   --mode line --method cgh --p 0.0 --epoch 1 --outdir /tmp/plots
 """
