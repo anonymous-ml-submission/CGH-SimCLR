@@ -3,7 +3,7 @@
 """
 tools/plot_dynamics_across_datasets.py
 
-ICML-friendly training dynamics plots from one or many dynamics.csv files.
+Training dynamics plots from one or many dynamics.csv files.
 
 Generates TWO plot families (CGH-only by default):
 A) Across datasets at fixed p:   dataset lines (CIFAR10/CIFAR100/STL10), mean±std over seeds
