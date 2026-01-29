@@ -165,7 +165,7 @@ def build_ssl_dataset(name, root, train=True, img_size=32, mean=None, std=None,
 
 
 # -------------------------
-# VICReg regularizers (as in your original)
+# VICReg regularizers 
 # -------------------------
 def vicreg_variance_loss(z, nu=1.0, eps=1e-4):
     z = z - z.mean(dim=0, keepdim=True)
@@ -184,7 +184,7 @@ def vicreg_covariance_loss(z):
 
 
 # -------------------------
-# CSV logging (same filenames as your original)
+# CSV logging 
 # -------------------------
 def append_result_row(out_root, args, knn_acc, lin_acc):
     path = os.path.join(out_root, "robustness_summary.csv")
@@ -293,7 +293,7 @@ def append_w_hist(out_root, args, ep, w_samples):
 
 
 # -------------------------
-# One full run (one seed)
+# One full run
 # -------------------------
 def main_single_run(args):
     seed_all(args.seed, deterministic=args.deterministic)
