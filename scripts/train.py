@@ -12,7 +12,7 @@ Key behaviors preserved:
 - warmup gate (batch z-scored) then absolute gate sigmoid((cr-c0)/t)
 - clip weights + renormalize to mean 1; optional bucket-normalization (exogenous)
 - optional positive-pair corruption by in-batch swapping
-- optional VICReg-style variance/cov regularizers on pre-norm projector outputs
+- optional VICReg-style variance/cov regularizers on pre-norm projector outputs (not used in main paper)
 - outputs: args.json, audit.json, eval.json, ckpts, robustness_summary.csv, dynamics.csv, w_hist.csv
 """
 
