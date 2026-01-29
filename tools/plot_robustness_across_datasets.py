@@ -18,9 +18,7 @@ Example:
     --outdir plots --out_csv plots/robustness_merged.csv \
     --seeds 0 1 2 3 4 \
     --infer_dataset_method
-
-By default, this script does NOT draw shaded bands (to avoid a 'colored strip' look).
-Use --shade if you want mean±std bands.
+    
 """
 
 import argparse
