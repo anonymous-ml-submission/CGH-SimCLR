@@ -4,7 +4,7 @@
 tools/eval_only_cifar_all_final.py
 
 Evaluate a trained checkpoint on CIFAR-10-C / CIFAR-100-C over ALL corruptions and severities.
-Designed for ICML artifact: repo-relative imports, offline-friendly.
+Designed for artifact: repo-relative imports, offline-friendly.
 
 Outputs:
 - per-corruption/severity CSV (default: cifarc_eval.csv)
