@@ -1,6 +1,7 @@
 # CGH-SimCLR
 
 Training SimCLR and CGH-SimCLR on CIFAR-10/100 and STL-10 and evaluating robustness on CIFAR-C.
+This repository is an anonymous artifact accompanying a submission under review.
 
 ---
 
